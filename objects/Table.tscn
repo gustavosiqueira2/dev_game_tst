@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqxu173y386u8"]
+
+[ext_resource type="Script" path="res://objects/Table.gd" id="1_rna1m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7xsa"]
+albedo_color = Color(0.52549, 0.223529, 0.0156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rc8wd"]
+material = SubResource("StandardMaterial3D_h7xsa")
+size = Vector3(0.5, 0.05, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmfij"]
+size = Vector3(0.5, 0.241333, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dxw2o"]
+size = Vector3(0.1, 0.2, 0.1)
+
+[node name="Table" type="RigidBody3D"]
+script = ExtResource("1_rna1m")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.214082, 0)
+mesh = SubResource("BoxMesh_rc8wd")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+transform = Transform3D(0.999939, -0.0110652, 0, 0.0110652, 0.999939, 0, 0, 0, 1, 0, -0.214082, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.216457, 0)
+shape = SubResource("BoxShape3D_qmfij")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00202611, 0.0995985, 0.00557677)
+mesh = SubResource("BoxMesh_dxw2o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118435, 0)
+shape = SubResource("BoxShape3D_qmfij")
+
+[connection signal="mouse_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_mouse_exited"]

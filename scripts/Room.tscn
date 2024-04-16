@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bladtikpvwrv7"]
+
+[ext_resource type="PackedScene" uid="uid://cqxu173y386u8" path="res://objects/Table.tscn" id="1_7m23g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_scf0i"]
+size = Vector3(10, 0.2, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oe08n"]
+size = Vector3(10, 0.2, 10)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.498684, 0.866784, 0, -0.866784, 0.498684, 0, 0.886595, 0.661107)
+fov = 75.2262
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100113, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_scf0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_oe08n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.597923, -0.782088, 0.175578, 0.166551, 0.335489, 0.927205, -0.78406, -0.525154, 0.330853, 3.28696, 4.49949, 2.65513)
+
+[node name="Table" parent="." instance=ExtResource("1_7m23g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.463)
+
+[node name="Table2" parent="." instance=ExtResource("1_7m23g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520623, 0, 0)
+
+[node name="Table3" parent="." instance=ExtResource("1_7m23g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.517156, 0, 0)
+
+[node name="Table4" parent="." instance=ExtResource("1_7m23g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52906)
